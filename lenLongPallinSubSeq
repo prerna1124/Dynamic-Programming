@@ -8,12 +8,16 @@ public class lenLongPallinSubSeq
 	{
 		int n = s.length();
 		table = new int[n][n];
+		// all 1 length strings are pallindrome in itself
 		for(int i=0;i<n;i++)
 			table[i][i] = 1;
+		//check for all the lengths from 2 to n
 		for(int l=2;l<=n;l++)
 		{
+			//determines row
 			for(int i=0;i<n-l+1;i++)
 			{
+				//generate column index for each row
 				int j = l+i-1;
 				if(l==2&&s.charAt(i)==s.charAt(j))
 					table[i][j]=2;
@@ -28,10 +32,12 @@ public class lenLongPallinSubSeq
 
 	public static void main(String[] args) throws Exception
 	{
+		// read input from console
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String s = reader.readLine();
 		StringBuilder st = new StringBuilder();
 		st.append(s);
+		//call function to find the length of longest pallindromic subsequence
 		int length = findLength(s);
 		System.out.println(length);
 	}
